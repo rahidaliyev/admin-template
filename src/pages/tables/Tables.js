@@ -12,7 +12,7 @@ import Table from "../dashboard/components/Table/Table";
 import mock from "../dashboard/mock";
 
 const datatableData = [
-  ["Joe James", "Example Inc.", "Yonkers", "NY"],
+  ["Rahid", "Example Inc.", "Yonkers", "NY"],
   ["John Walsh", "Example Inc.", "Hartford", "CT"],
   ["Bob Herm", "Example Inc.", "Tampa", "FL"],
   ["James Houston", "Example Inc.", "Dallas", "TX"],
@@ -47,7 +47,7 @@ export default function Tables() {
           <MUIDataTable
             title="Employee List"
             data={datatableData}
-            columns={["Name", "Company", "City", "State"]}
+            columns={["Name", "Surname", "Age", "City"]}
             options={{
               filterType: "checkbox",
             }}
