@@ -128,15 +128,15 @@ const mock = {
     }
   ],
   table: [
-    {
-      id: 0,
-      name: "Mark Otto",
-      email: "ottoto@wxample.com",
+    { 
+      id: 0, //primary
+      name: "Mark Otto",  //primary
+      email: "ottoto@wxample.com", //primary
       product: "ON the Road",
       price: "$25 224.2",
       date: "11 May 2017",
-      city: "Otsego",
-      status: "Sent"
+      city: "Otsego", //primary
+      status: "Sent" //primary
     },
     {
       id: 1,
