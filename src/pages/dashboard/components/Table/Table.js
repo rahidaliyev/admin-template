@@ -16,20 +16,57 @@ const changeMouse=(e)=> {
 
 export default function TableComponent() {
   const [employeelist,setEmployee]=useState([]);
-  const fetchedData=useEffect(()=>{
+  const [posts, setPosts] = useState([])
+
+  useEffect(()=>{
     axios.get('employee.json')
     .then(res=>{console.log(res.data)
     setEmployee(res.data)})
     .catch((err)=>console.log(err))
   },[])
-  
-  const [rows,setRows]=useState([
 
-  ])
 
-const deleteRow=()=>{
-  console.log('deletebutton');
-}
+  const handleDelete = (postIndex) => {
+    setPosts((prevPosts) =>
+      prevPosts.filter((_, index) => index !== postIndex)
+    );
+  };
+  // const [dataArray, setDataArray] = useState([fetchedData]);
+  // const removeSite = async (id) => {
+  //   setDataArray((data) => data.filter((dataEach) => dataEach.id !== id));
+  // };
+
+
+// const removeData=(contactId)=>{
+//   const newContacts=[...fetchedData];
+//   const index=fetchedData.findIndex((contact)=>{contact.id===contactId;})
+//   newContacts.splice(index,1)
+//   setContact(newContacts);
+// }
+
+
+// const removeData = (id) => {
+//   let url = `employee.json/${id}`
+
+//   axios.delete(url).then(res => {
+//       const del = employees.filter(employee => id !== employee.id)
+//       setEmployees(del)
+//       console.log('res', res)
+//   })
+// }
+
+// fetch('employee.json', {
+//   method: 'DELETE',
+//   headers: {
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify(null)  //if you do not want to send any addional data,  replace the complete JSON.stringify(YOUR_ADDITIONAL_DATA) with null
+// })
+
+
+
+
+
  
   return (
     <Table className="mb-0">
@@ -46,15 +83,18 @@ const deleteRow=()=>{
         </TableRow>
       </TableHead>
       <TableBody>
+   
+   
+   
     {employeelist.map(emp=>(
-             <TableRow key={emp.id}>
+             <TableRow   key={emp.id}>
              <TableCell className="pl-3 fw-normal">{emp.name}</TableCell>
              <TableCell>{emp.email}</TableCell>
              <TableCell>{emp.road}</TableCell>
              <TableCell>{emp.payment}</TableCell>
              <TableCell>{emp.date}</TableCell>
              <TableCell  onMouseOver={changeMouse} ><Button  size='small' style={{background:'#4caf50',color:"white",fontSize:"10px"}}>EDIT</Button></TableCell>
-             <TableCell onMouseOver={changeMouse}><Button onClick={deleteRow}    size='small' style={{background:'#ef5350',color:"white",fontSize:"10px"}}>DELETE</Button></TableCell>
+             <TableCell onMouseOver={changeMouse}><Button   size='small' style={{background:'#ef5350',color:"white",fontSize:"10px"}}>DELETE</Button></TableCell>
            </TableRow>
     ))}
    
