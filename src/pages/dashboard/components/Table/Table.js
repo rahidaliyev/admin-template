@@ -29,6 +29,13 @@ export default function TableComponent() {
       prevPosts.filter((_, index) => index !== postIndex)
     );
   };
+
+  // const editComponent=(postIndex)=> {
+  //   this.setState({ editedIndex: postIndex });
+  // }
+
+
+
   return (
     <Table className="mb-0">
       <TableHead>
@@ -54,7 +61,7 @@ export default function TableComponent() {
              <TableCell>{emp.road}</TableCell>
              <TableCell>{emp.payment}</TableCell>
              <TableCell>{emp.date}</TableCell>
-             <TableCell  onMouseOver={changeMouse} ><Button  size='small' style={{background:'#4caf50',color:"white",fontSize:"10px"}}>EDIT</Button></TableCell>
+             <TableCell  onMouseOver={changeMouse} ><Button   size='small' style={{background:'#4caf50',color:"white",fontSize:"10px"}}>EDIT</Button></TableCell>
              <TableCell onMouseOver={changeMouse}><Button onClick={() => handleDelete(postIndex)}  size='small' style={{background:'#ef5350',color:"white",fontSize:"10px"}}>DELETE</Button></TableCell>
            </TableRow>
     ))}
