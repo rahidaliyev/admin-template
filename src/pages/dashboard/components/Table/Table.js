@@ -24,6 +24,11 @@ export default function TableComponent() {
     .catch((err)=>console.log(err))
   },[])
 
+  const handleDelete = (postIndex) => {
+    setEmployee((prevPosts) =>
+      prevPosts.filter((_, index) => index !== postIndex)
+    );
+  };
   return (
     <Table className="mb-0">
       <TableHead>
@@ -42,7 +47,7 @@ export default function TableComponent() {
    
    
    
-    {employeelist.map(emp=>(
+    {employeelist.map((emp,postIndex)=>(
              <TableRow key={emp.id}>
              <TableCell className="pl-3 fw-normal">{emp.name}</TableCell>
              <TableCell>{emp.email}</TableCell>
@@ -50,7 +55,7 @@ export default function TableComponent() {
              <TableCell>{emp.payment}</TableCell>
              <TableCell>{emp.date}</TableCell>
              <TableCell  onMouseOver={changeMouse} ><Button  size='small' style={{background:'#4caf50',color:"white",fontSize:"10px"}}>EDIT</Button></TableCell>
-             <TableCell onMouseOver={changeMouse}><Button   size='small' style={{background:'#ef5350',color:"white",fontSize:"10px"}}>DELETE</Button></TableCell>
+             <TableCell onMouseOver={changeMouse}><Button onClick={() => handleDelete(postIndex)}  size='small' style={{background:'#ef5350',color:"white",fontSize:"10px"}}>DELETE</Button></TableCell>
            </TableRow>
     ))}
    
